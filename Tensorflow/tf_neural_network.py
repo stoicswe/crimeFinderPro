@@ -1,7 +1,14 @@
 import tensorflow as tf
+from tensorflow import keras
 import numpy as np
 
-X = [[0.0,0.0,1.0],[0.0,1.0,1.0],[1.0,0.0,1.0],[1.0,1.0,1.0]]
+def build_model(hidden, units, activation, outputs):
+    model = keras.Sequential()
+    for i in range(hidden):
+        model.add(keras.layers.Dense(units, activation=activation))
+    model.add(keras.layers.Dense(units, activation='softmax'))
+
+"""X = [[0.0,0.0,1.0],[0.0,1.0,1.0],[1.0,0.0,1.0],[1.0,1.0,1.0]]
 y = [[0.0, 1.0, 1.0, 0.0]]
 data = np.array(X)
 labels = np.array(y).T
@@ -25,4 +32,4 @@ print()
 print("X    y    y_pred")
 print("----------------")
 for i in range(len(labels)):
-    print(data[i], labels[i], [pl2[i]])
+    print(data[i], labels[i], [pl2[i]])"""

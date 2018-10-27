@@ -10,9 +10,10 @@ from kmeans_hybrid import QKMeans
 import requests
 import os
 
+google_api_key = 'AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8'
 
 def getLatLon(address):
-    key2 = "AIzaSyDlPGwvHDrnUh7cugYNIngmJPmZAWAN_VY"
+    key2 = "AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8"
     gmaps = googlemaps.Client(key = key2)
     return(gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA'))
 
