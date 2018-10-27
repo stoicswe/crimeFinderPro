@@ -3,7 +3,7 @@ sys.path.insert(0, "./Quantum")
 sys.path.insert(0, "./Classical")
 sys.path.insert(0, "./Tensorflow")
 import googlemaps
-import data_formation
+#import data_formation
 from sklearn import linear_model
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from kmeans_hybrid import QKMeans

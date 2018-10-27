@@ -137,7 +137,11 @@ def plotDays():
     plt.title('Programming language usage')
     plt.show()
 
+<<<<<<< HEAD
 CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
+=======
+CrimeData = pd.read_csv("""./Datasets/CrimeData_2012.csv""")
+>>>>>>> 8bec672b5c20ac72efd6380385b6119f69d810b0
 plotCrimes()
 plotDays()
 plotHours()
