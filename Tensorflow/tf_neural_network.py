@@ -23,7 +23,17 @@ def train_categorial_classification(model, data, labels, epochs, batch):
     model.compile(optimizer=tf.train.RMSPropOptimizer(0.01), loss=keras.losses.categorical_crossentropy, metrics=[keras.metrics.categorical_accuracy])
     model.fit(data, labels, epochs=epochs, batch_size=batch)
 
+def evaluate_batch(model, x, y, batch_size):
+    return model.evaluate(x, y, batch_size=batch_size)
 
+def evaluate_steps(model, x, y, steps):
+    return model.evaluate(x, y, steps=steps)
+
+def predict_batch(model, x, y, batch_size):
+    return model.predict(x, y, batch_size=batch_size)
+
+def predict_steps(model, x, y, steps):
+    return model.predict(x, y, steps=steps)
 
 """X = [[0.0,0.0,1.0],[0.0,1.0,1.0],[1.0,0.0,1.0],[1.0,1.0,1.0]]
 y = [[0.0, 1.0, 1.0, 0.0]]
