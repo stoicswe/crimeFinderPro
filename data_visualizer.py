@@ -41,6 +41,7 @@ def import_dataframe(csv_file = ''):
 
 
 #Replace Vals With #of crime
+'''
 def plotCrimes():
     #Working Currently Right here
     crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
@@ -67,7 +68,46 @@ def plotCrimes():
     #clf()
     #close()
 
+'''
 
+def plotCrimes():
+    #Working Currently Right here
+    crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
+    crimesText = CrimeData['Statute_Text'].tolist()
+    crimes = list(set(crimesText))
+    counts = []
+    for elem in range(len(crimes)):
+        counts.append(crimesText.count(crimes[elem]))
+    #crimesText = list(set(crimesText))
+    #Below line change the 'time' to time crime it is'
+    
+    
+    plt.pie(counts, labels=crimes, startangle=90, autopct='%.1f%%')
+    plt.title('Rochester Crime Distribution')
+    plt.show()
+    '''
+    fig, ax = plt.subplots()
+
+    size = 0.3
+    #vals = np.array([[60., 32.], [37., 40.], [29., 10.]])
+
+    cmap = plt.get_cmap("tab20c")
+    outer_colors = cmap(np.arange(vals.size*2))
+    inner_colors = cmap(np.array([1, 2, 5, 6, 9, 10]))
+
+    ax.pie(vals.sum(axis=1), radius=1, colors=outer_colors, wedgeprops=dict(width=size, edgecolor='w'))
+
+    ax.pie(vals.flatten(), radius=1-size, colors=inner_colors,wedgeprops=dict(width=size, edgecolor='w'))
+
+    ax.set(aspect="equal", title='Pie plot with `ax.pie`')
+    plt.show()
+
+    '''
+    #clf()
+    #close()
+
+    
+    
 def plotHours():
     #Below line change the 'crime' to whatever crime it is'
     crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
@@ -95,6 +135,7 @@ def plotHours():
     # beautify the x-labels
     print(yAxis)
     print(xAxis)
+    plt.xlabel('Hour')
     plt.gcf().autofmt_xdate()
     plt.show()
 
@@ -133,15 +174,11 @@ def plotDays():
     plt.bar(y_pos, performance, align='center', alpha=0.5)
     #plt.bar(y_pos, performance, align='center', alpha=0.5)
     plt.xticks(y_pos, days)
-    plt.xlabel('Usage')
-    plt.title('Programming language usage')
+    plt.xlabel('Day')
+    plt.title('Daily Distribution of Crime/Yr')
     plt.show()
 
-<<<<<<< HEAD
 CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
-=======
-CrimeData = pd.read_csv("""./Datasets/CrimeData_2012.csv""")
->>>>>>> 8bec672b5c20ac72efd6380385b6119f69d810b0
 plotCrimes()
 plotDays()
 plotHours()
