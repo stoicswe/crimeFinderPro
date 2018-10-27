@@ -4,18 +4,25 @@ sys.path.insert(0, "./Classical")
 sys.path.insert(0, "./Tensorflow")
 import googlemaps
 import data_formation
-from sklearn import linear_model, DecisionTreeClassifier, DecisionTreeRegression
+from sklearn import linear_model
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from kmeans_hybrid import QKMeans
 import requests
+import os
 
-gmaps = googlemaps.Client(key='AIzaSyDlPGwvHDrnUh7cugYNIngmJPmZAWAN_VY')
 
+<<<<<<< HEAD
 def getLatLon(address):
     return gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
 
 
 def getLat():   
     address = "1600 Amphitheatre Parkway, Mountain View, CA"
+=======
+def getLat(x):   
+    #address = "1600 Amphitheatre Parkway, Mountain View, CA"
+    address = x
+>>>>>>> 12c6ca23a1dd13469eaef9977f002d2cf85b90e3
     api_key = "AIzaSyDlPGwvHDrnUh7cugYNIngmJPmZAWAN_VY"
     api_response = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address={0}&key={1}'.format(address, api_key))
     api_response_dict = api_response.json()
@@ -25,7 +32,7 @@ def getLat():
         longitude = api_response_dict['results'][0]['geometry']['location']['lng']
         print ('Latitude:' + str(latitude))
         print ('Longitude:' + str(longitude))
-
+    return(list(str(latitude),str(longitude)))
 
 # returns a complete quantum kmeans model
 def qkmeans_analysis(X, y, k):
@@ -35,7 +42,6 @@ def qkmeans_analysis(X, y, k):
     print("ClusterCentroids:")
     print(qkm.means)
     return qkm
-
 
 def decision_tree_classification(X, y):
     dtc = sklearn.tree.DecisionTreeClassifier()
@@ -49,10 +55,21 @@ def decision_tree_regression(X, y):
 
 def lineReg(X,y):
     regr = sklearn.linear_model.LinearRegression()
- # Train the model using the training sets
+    #Train the model using the training sets
     regr.fit(X_train, Y_train)
     return(regr)
 
+def plotMaps(): 
+    crimeColumn = CrimeData['Geocode_Address'].tolist()
+    data = []
+    for x in range(len(crimeColumn)):
+        data.append(getLat(crimeColumn[x]))
     
-CrimeData = data_formation.import_dataframe("CrimeData.csv")
+    
+    geoplotlib.dot(data)
+    geoplotlib.show()
+
+CrimeData = data_formation.import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2011.csv")
 #CrimeLoc = CrimeData[]
+    
+    
