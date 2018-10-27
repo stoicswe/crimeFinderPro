@@ -16,4 +16,3 @@ def qkmeans_analysis(X, y, k):
     print("ClusterCentroids:")
     print(qkm.means)
     return qkm
-
