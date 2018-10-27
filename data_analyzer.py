@@ -24,9 +24,8 @@ def import_dataframe(csv_file = ''):
     return df
 
 def getLatLon(address):
-    key2 = "AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8"
     gmaps = googlemaps.Client(key = key2)
-    return(gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA'))
+    return(gmaps.geocode(address))
 
     
 def getLat(x):   
@@ -82,4 +81,3 @@ def plotMaps(CrimeData):
 
 #CrimeData = import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2018.csv")
 #CrimeLoc = CrimeData[]
-
