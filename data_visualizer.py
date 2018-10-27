@@ -76,13 +76,8 @@ def plotHours():
         Times.append(int(dateColumn[z]/100))
         #CrimeTimeSplit[crimesType.index(crimeColumn[z])].append(int(dateColumn[z]/100))
     #import matplotlib.pyplot as plt
-<<<<<<< HEAD
     xAxis = list(range(23))
     yAxis = []
-=======
-    xAxis = [range(23)]
-    yAxis = [] # this is to fix yAxis.append
->>>>>>> b7e9c65747b0737a0283f1697865b608e915ca26
     for x in range(len(xAxis)):
         yAxis.append(Times.count(xAxis[x]))
     # make up some data
