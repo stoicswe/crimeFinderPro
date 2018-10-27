@@ -33,6 +33,7 @@ def qkmeans_analysis(X, y, k):
     print(qkm.means)
     return qkm
 
+
 def decision_tree_classification(X, y):
     dtc = sklearn.tree.DecisionTreeClassifier()
     dtc = dtc.fit(X,y)
@@ -52,5 +53,3 @@ def lineReg(X,y):
     
 CrimeData = data_formation.import_dataframe("CrimeData.csv")
 #CrimeLoc = CrimeData[]
-    
-    
