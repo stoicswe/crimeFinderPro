@@ -2,38 +2,39 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 
-def build_model(hidden, units, activation, outputs):
-    model = keras.Sequential()
-    for i in range(hidden):
-        model.add(keras.layers.Dense(units, activation=activation))
-    model.add(keras.layers.Dense(units, activation='softmax'))
-    return model
+class TFNN():
+    def build_model(self, hidden, units, activation, outputs):
+        model = keras.Sequential()
+        for i in range(hidden):
+            model.add(keras.layers.Dense(units, activation=activation))
+        model.add(keras.layers.Dense(units, activation='softmax'))
+        return model
 
-# model.fit(data, labels, epochs=10, batch_size=32, validation_data=(val_data, val_labels))
+    # model.fit(data, labels, epochs=10, batch_size=32, validation_data=(val_data, val_labels))
 
-def train_gradient_descent_model(model, data, labels, epochs, batch):
-    model.compile(optimizer=tf.train.GradientDescentOptimizer(0.01), metrics=['accuracy'])
-    model.fit(data, labels, epochs=epochs, batch_size=batch)
+    def train_gradient_descent_model(self, model, data, labels, epochs, batch):
+        model.compile(optimizer=tf.train.GradientDescentOptimizer(0.01), metrics=['accuracy'])
+        model.fit(data, labels, epochs=epochs, batch_size=batch)
 
-def train_mean_square_error_reg(model, data, labels, epochs, batch):
-    model.compile(optimizer=tf.train.AdamOptimizer(0.01), loss='mse', metrics=['mae'])
-    model.fit(data, labels, epochs=epochs, batch_size=batch)
+    def train_mean_square_error_reg(self, model, data, labels, epochs, batch):
+        model.compile(optimizer=tf.train.AdamOptimizer(0.01), loss='mse', metrics=['mae'])
+        model.fit(data, labels, epochs=epochs, batch_size=batch)
 
-def train_categorial_classification(model, data, labels, epochs, batch):
-    model.compile(optimizer=tf.train.RMSPropOptimizer(0.01), loss=keras.losses.categorical_crossentropy, metrics=[keras.metrics.categorical_accuracy])
-    model.fit(data, labels, epochs=epochs, batch_size=batch)
+    def train_categorial_classification(self, model, data, labels, epochs, batch):
+        model.compile(optimizer=tf.train.RMSPropOptimizer(0.01), loss=keras.losses.categorical_crossentropy, metrics=[keras.metrics.categorical_accuracy])
+        model.fit(data, labels, epochs=epochs, batch_size=batch)
 
-def evaluate_batch(model, x, y, batch_size):
-    return model.evaluate(x, y, batch_size=batch_size)
+    def evaluate_batch(self, model, x, y, batch_size):
+        return model.evaluate(x, y, batch_size=batch_size)
 
-def evaluate_steps(model, x, y, steps):
-    return model.evaluate(x, y, steps=steps)
+    def evaluate_steps(self, model, x, y, steps):
+        return model.evaluate(x, y, steps=steps)
 
-def predict_batch(model, x, y, batch_size):
-    return model.predict(x, y, batch_size=batch_size)
+    def predict_batch(self, model, x, y, batch_size):
+        return model.predict(x, y, batch_size=batch_size)
 
-def predict_steps(model, x, y, steps):
-    return model.predict(x, y, steps=steps)
+    def predict_steps(self, model, x, y, steps):
+        return model.predict(x, y, steps=steps)
 
 """X = [[0.0,0.0,1.0],[0.0,1.0,1.0],[1.0,0.0,1.0],[1.0,1.0,1.0]]
 y = [[0.0, 1.0, 1.0, 0.0]]

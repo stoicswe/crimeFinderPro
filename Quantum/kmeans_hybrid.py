@@ -43,7 +43,7 @@ class QKMeans:
 
 def squared_clustering_errors(inputs, k):
     """finds the total squared error from k-means clustering the inputs"""
-    clusterer = KMeans(k)
+    clusterer = QKMeans(k)
     clusterer.train(inputs)
     means = clusterer.means
     assignments = list(map(clusterer.classify, inputs))
@@ -150,7 +150,7 @@ if __name__ == "__main__":
     random.seed(0) # so you get the same results as me
     #clusterer = KMeans(3)
     clusters = 2
-    clusterer = KMeans(clusters)
+    clusterer = QKMeans(clusters)
     clusterer.train(inputs)
     print("{0}-means". format(clusters))
     print(clusterer.means)
