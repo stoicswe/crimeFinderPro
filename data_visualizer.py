@@ -1,3 +1,13 @@
+# Sumayyah Alahmadi, Jonathan Povish
+# 10/26/2018
+# CrimeFinder Pro
+# DandyHacks Hackathon Submission
+# 
+# This part of the program deals with visualizing the data and computing graphs.
+# Once the analysis is complete of the data given, the resulting analysis is sent
+# here to be visualized for the user of the software.
+
+
 import matplotlib.pyplot as plt
 import random
 import numpy as np
@@ -64,6 +74,7 @@ def plotHours():
         CrimeTimeSplit[crimesType.index(crimes[x])].append(int(dateColumn[z]/100))
     #import matplotlib.pyplot as plt
     xAxis = [range(23)]
+    yAxis = [] # this is to fix yAxis.append
     for x in range(len(xAxis)):
         yAxis.append(xAxis.count(xAxis[x]))
     # make up some data
