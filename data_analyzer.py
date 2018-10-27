@@ -10,6 +10,8 @@ from kmeans_hybrid import QKMeans
 import requests
 import os
 import pandas as pd
+import geoplotlib
+from tf_neural_network import TFNN
 
 google_api_key = 'AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8'
 
@@ -22,9 +24,8 @@ def import_dataframe(csv_file = ''):
     return df
 
 def getLatLon(address):
-    key2 = "AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8"
     gmaps = googlemaps.Client(key = key2)
-    return(gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA'))
+    return(gmaps.geocode(address))
 
     
 def getLat(x):   
@@ -53,33 +54,30 @@ def qkmeans_analysis(X, y, k):
     return qkm
 
 def decision_tree_classification(X, y):
-    dtc = sklearn.tree.DecisionTreeClassifier()
+    dtc = DecisionTreeClassifier()
     dtc = dtc.fit(X,y)
     return dtc
 
 def decision_tree_regression(X, y):
-    dtr = sklearn.tree.DecisionTreeRegressor()
+    dtr = DecisionTreeRegressor()
     dtr = dtr.fit(X,y)
     return dtr
 
 def lineReg(X,y):
-    regr = sklearn.linear_model.LinearRegression()
+    regr = linear_model.LinearRegression()
     #Train the model using the training sets
-    regr.fit(X_train, Y_train)
-    return(regr)
+    regr = regr.fit(X, y)
+    return regr
 
-def plotMaps(): 
+def plotMaps(CrimeData): 
     crimeColumn = CrimeData['Geocode_Address'].tolist()
     data = []
     for x in range(len(crimeColumn)):
         tempvar = getLat(crimeColumn[x])
         data.append(tempvar)
         print(tempvar)
-    
     geoplotlib.dot(data)
     geoplotlib.show()
 
-CrimeData = data_formation.import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2018.csv")
+#CrimeData = import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2018.csv")
 #CrimeLoc = CrimeData[]
-    
-    

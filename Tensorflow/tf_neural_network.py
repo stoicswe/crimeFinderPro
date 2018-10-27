@@ -2,61 +2,37 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 
-def build_model(hidden, units, activation, outputs):
-    model = keras.Sequential()
-    for i in range(hidden):
-        model.add(keras.layers.Dense(units, activation=activation))
-    model.add(keras.layers.Dense(units, activation='softmax'))
-    return model
+class TFNN():
 
-# model.fit(data, labels, epochs=10, batch_size=32, validation_data=(val_data, val_labels))
+    def __init__(self, hidden = 2, units = 2, activation = 'sigmoid', outputs = 1):
+        self.model = self.build_model(hidden, units, activation, outputs)
 
-def train_gradient_descent_model(model, data, labels, epochs, batch):
-    model.compile(optimizer=tf.train.GradientDescentOptimizer(0.01), metrics=['accuracy'])
-    model.fit(data, labels, epochs=epochs, batch_size=batch)
+    def build_model(self, hidden, units, activation, outputs):
+        model = keras.Sequential()
+        for i in range(hidden):
+            model.add(keras.layers.Dense(units, activation=activation))
+        model.add(keras.layers.Dense(units, activation='softmax'))
+        return model
 
-def train_mean_square_error_reg(model, data, labels, epochs, batch):
-    model.compile(optimizer=tf.train.AdamOptimizer(0.01), loss='mse', metrics=['mae'])
-    model.fit(data, labels, epochs=epochs, batch_size=batch)
+    # model.fit(data, labels, epochs=10, batch_size=32, validation_data=(val_data, val_labels))
 
-def train_categorial_classification(model, data, labels, epochs, batch):
-    model.compile(optimizer=tf.train.RMSPropOptimizer(0.01), loss=keras.losses.categorical_crossentropy, metrics=[keras.metrics.categorical_accuracy])
-    model.fit(data, labels, epochs=epochs, batch_size=batch)
+    def train_gradient_descent_model(self, data, labels, epochs, batch, loss_rate=0.5):
+        self.model.compile(optimizer=tf.train.GradientDescentOptimizer(0.01), metrics=['accuracy'], loss=loss_rate)
+        self.model.fit(data, labels, epochs=epochs, batch_size=batch)
 
-def evaluate_batch(model, x, y, batch_size):
-    return model.evaluate(x, y, batch_size=batch_size)
+    def train_mean_square_error_reg(self, data, labels, epochs, batch):
+        self.model.compile(optimizer=tf.train.AdamOptimizer(0.01), loss='mse', metrics=['mae'])
+        self.model.fit(data, labels, epochs=epochs, batch_size=batch)
 
-def evaluate_steps(model, x, y, steps):
-    return model.evaluate(x, y, steps=steps)
+    def train_categorial_classification(self, data, labels, epochs, batch):
+        self.model.compile(optimizer=tf.train.RMSPropOptimizer(0.01), loss=keras.losses.categorical_crossentropy, metrics=[keras.metrics.categorical_accuracy])
+        self.model.fit(data, labels, epochs=epochs, batch_size=batch)
 
-def predict_batch(model, x, y, batch_size):
-    return model.predict(x, y, batch_size=batch_size)
+    def evaluate(self, x, y, batch):
+        return self.model.evaluate(x, y, batch_size=batch)
 
-def predict_steps(model, x, y, steps):
-    return model.predict(x, y, steps=steps)
-
-"""X = [[0.0,0.0,1.0],[0.0,1.0,1.0],[1.0,0.0,1.0],[1.0,1.0,1.0]]
-y = [[0.0, 1.0, 1.0, 0.0]]
-data = np.array(X)
-labels = np.array(y).T
-syn0 = tf.random_uniform([3,4]) - 1 # 4 is arbitrary, 3 is for inputs
-syn1 = tf.random_uniform([4,1]) - 1 # 4 is arbitrary, 1 is for outputs
-
-with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
-    for j in range(600):
-        l1 = 1 / (1 + tf.exp(-1*(tf.matmul(X,syn0))))
-        l2 = 1 / (1 + tf.exp(-1*(tf.matmul(l1,syn1))))
-        l2_delta = (y - l2) * (l2 * (1-l2))
-        l1_delta = tf.matmul(l2_delta, (tf.transpose(syn1) * (l1 * (1 - 1*l1))))
-        syn1 += tf.matmul(tf.transpose(l1), l2_delta)
-        syn0 += tf.matmul(tf.transpose(X), l1_delta)
-    pl2 = l2.eval()
-pl2 = np.array(pl2)[0]
-print("PL2")
-print(pl2)
-print()
-print("X    y    y_pred")
-print("----------------")
-for i in range(len(labels)):
-    print(data[i], labels[i], [pl2[i]])"""
+    def predict_batch(self, x, batch):
+        return self.model.predict(x, batch_size=batch)
+    
+    def save_model(self):
+        self.model.save('my_model.h5')
