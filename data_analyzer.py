@@ -17,3 +17,12 @@ def qkmeans_analysis(X, y, k):
     print(qkm.means)
     return qkm
 
+def decision_tree_classification(X, y):
+    dtc = sklearn.tree.DecisionTreeClassifier()
+    dtc = dtc.fit(X,y)
+    return dtc
+
+def decision_tree_regression(X, y):
+    dtr = sklearn.tree.DecisionTreeRegressor()
+    dtr = dtr.fit(X,y)
+    return dtr
