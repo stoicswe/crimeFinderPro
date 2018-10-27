@@ -13,8 +13,8 @@ import random
 import numpy as np
 from datetime import datetime
 import data_formation
-import geoplotlib
-import googlemaps
+#import geoplotlib
+#import googlemaps
 ''' Below is an example of a simple pie chart 
 labels = 'Python', 'C++', 'Ruby', 'Java'
 #Replace this with labels of crime
@@ -35,9 +35,9 @@ plt.show()
 #Replace Vals With #of crime
 def plotCrimes():
     #Working Currently Right here
-    crimeColumn = CrimeData['StatuteCrimeCategory'].tolist()
+    crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
     #Below line change the 'time' to time crime it is'
-    sexColumn = CrimeData['StatuteCategory'].tolist()    
+    sexColumn = CrimeData['Statute_Category'].tolist()    
     crimes = list(set(crimeColumn))
     vals = []
     for x in range(len(crimes)):
@@ -62,9 +62,9 @@ def plotCrimes():
 
 def plotHours():
     #Below line change the 'crime' to whatever crime it is'
-    crimeColumn = CrimeData['StatuteCrimeCategory'].tolist()
+    crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
     #Below line change the 'time' to time crime it is'
-    dateColumn = CrimeData['OccurredThroughTime'].tolist()
+    dateColumn = CrimeData['Occurred_ThroughTime'].tolist()
 
     crimesType = list(set(crimeColumn))
     CrimeTimeSplit = []
@@ -94,9 +94,9 @@ def plotHours():
 
 def plotDays():
     #Below line change the 'crime' to whatever crime it is'
-    crimeColumn = CrimeData['StatuteCategory'].tolist()
+    crimeColumn = CrimeData['Statute_Category'].tolist()
     #Below line change the 'time' to where the full time crime it is'
-    dateColumn = CrimeData['OccurredThroughTimestamp'].tolist()
+    dateColumn = CrimeData['Occurred_ThroughTimestamp'].tolist()
     
     crimesType = list(set(crimeColumn))
     CrimeDaySplit = []
@@ -130,7 +130,7 @@ def plotDays():
     plt.title('Programming language usage')
     plt.show()
 
-CrimeData = data_formation.import_dataframe("CrimeData.csv")
+CrimeData = data_formation.import_dataframe("‪C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_Full_2011_to_2018.csv")
 plotCrimes()
 plotDays()
 plotHours()
