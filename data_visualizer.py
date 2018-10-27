@@ -7,12 +7,12 @@
 # Once the analysis is complete of the data given, the resulting analysis is sent
 # here to be visualized for the user of the software.
 
-
+#from data_formation import import_dataframe
 import matplotlib.pyplot as plt
 import random
 import numpy as np
 from datetime import datetime
-from data_formation import import_dataframe
+import pandas as pd
 #import geoplotlib
 #import googlemaps
 ''' Below is an example of a simple pie chart 
@@ -30,6 +30,14 @@ plt.pie(sizes, explode=explode, labels=labels, colors=colors,
 plt.axis('equal')
 plt.show()
 '''
+
+def import_dataframe(csv_file = ''):
+    #df = pd.DataFrame.from_csv(file)
+    df = pd.read_csv(csv_file)
+    print(df)
+    labels_to_drop = ["Y", "OBJECTID", "Geocode_Street","Case_Number","Reported_Date_Year","Reported_Date_Month","Reported_Time","Reported_Timestamp","Address_StreetFull","Address_City","Address_State","Patrol_Beat","Patrol_Section","Case_Status","Statute_Title","Statute_Section","Statute_Subsection","Statute_Degree","Statute_Class","Statute_Text","Statute_Attempted","Geo_Beat","Geo_Section","Geo_Section_Num"]
+    df = df.drop(labels=labels_to_drop, axis=1)
+    return df
 
 
 #Replace Vals With #of crime
@@ -130,7 +138,7 @@ def plotDays():
     plt.title('Programming language usage')
     plt.show()
 
-CrimeData = import_dataframe('‪./CrimeData_2012.csv')
+CrimeData = import_dataframe('‪./Datasets/CrimeData_2012.csv')
 plotCrimes()
 plotDays()
 plotHours()
