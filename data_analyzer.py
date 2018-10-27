@@ -11,18 +11,14 @@ import requests
 import os
 
 
-<<<<<<< HEAD
 def getLatLon(address):
     return gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
 
-
 def getLat():   
     address = "1600 Amphitheatre Parkway, Mountain View, CA"
-=======
 def getLat(x):   
     #address = "1600 Amphitheatre Parkway, Mountain View, CA"
     address = x
->>>>>>> 12c6ca23a1dd13469eaef9977f002d2cf85b90e3
     api_key = "AIzaSyDlPGwvHDrnUh7cugYNIngmJPmZAWAN_VY"
     api_response = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address={0}&key={1}'.format(address, api_key))
     api_response_dict = api_response.json()
