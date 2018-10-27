@@ -14,8 +14,7 @@ import os
 def getLatLon(address):
     return gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
 
-def getLat():   
-    address = "1600 Amphitheatre Parkway, Mountain View, CA"
+    
 def getLat(x):   
     #address = "1600 Amphitheatre Parkway, Mountain View, CA"
     address = x
@@ -65,7 +64,7 @@ def plotMaps():
     geoplotlib.dot(data)
     geoplotlib.show()
 
-CrimeData = data_formation.import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2011.csv")
+CrimeData = data_formation.import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2012.csv")
 #CrimeLoc = CrimeData[]
     
     
