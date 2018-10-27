@@ -10,6 +10,9 @@ import requests
 
 gmaps = googlemaps.Client(key='AIzaSyDlPGwvHDrnUh7cugYNIngmJPmZAWAN_VY')
 
+def getLatLon(address):
+    return gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
+
 
 def getLat():   
     address = "1600 Amphitheatre Parkway, Mountain View, CA"
