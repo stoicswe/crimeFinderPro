@@ -72,8 +72,7 @@ def plotHours():
     #Below line change the 'crime' to whatever crime it is'
     crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
     #Below line change the 'time' to time crime it is'
-    dateColumn = CrimeData['Occurred_ThroughTime'].tolist()
-
+    dateColumn = CrimeData['OccurredThrough_Time'].tolist()
     crimesType = list(set(crimeColumn))
     CrimeTimeSplit = []
     Times = []
@@ -104,7 +103,7 @@ def plotDays():
     #Below line change the 'crime' to whatever crime it is'
     crimeColumn = CrimeData['Statute_Category'].tolist()
     #Below line change the 'time' to where the full time crime it is'
-    dateColumn = CrimeData['Occurred_ThroughTimestamp'].tolist()
+    dateColumn = CrimeData['OccurredThrough_Timestamp'].tolist()
     
     crimesType = list(set(crimeColumn))
     CrimeDaySplit = []
@@ -114,7 +113,7 @@ def plotDays():
         CrimeDaySplit.append([])
 
     for z in range(len(crimeColumn)):
-        d = datetime.strptime(dateColumn[z].split(",")[0], "%m/%d/%Y")
+        d = datetime.strptime(dateColumn[z].split("T")[0], "%Y-%m-%d")
 
         totalTime.append(d.weekday())
         #This is here if we want each crimes distrobution 
@@ -138,7 +137,7 @@ def plotDays():
     plt.title('Programming language usage')
     plt.show()
 
-CrimeData = pd.read_csv('‪./Datasets/CrimeData_2012.csv')
+CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
 plotCrimes()
 plotDays()
 plotHours()
