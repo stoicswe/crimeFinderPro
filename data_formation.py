@@ -12,7 +12,7 @@ import numpy as py
 import random
 import csv
 
-def import_data(file):
+def import_dictionary(file):
     with open(file, mode='r', encoding="utf-8") as csv_file:
         csv_reader = csv.DictReader(csv_file)
         lines = 0
@@ -30,5 +30,3 @@ def import_dataframe(file):
     labels_to_drop = ["GeocodeStreet","CaseNumber","ReportedDateYear","ReportedDateMonth","ReportedTime","ReportedTimestamp","AddressStreetFull","AddressCity","AddressState","PatrolBeat","PatrolSection","CaseStatus","StatuteTitle","StatuteSection","StatuteSubsection","StatuteDegree","StatuteClass","StatuteText","StatuteAttempted","GeoBeat","GeoSection","GeoSectionNum"]
     df = df.drop(labels=labels_to_drop, axis=1)
     return df
-
-import_data("CrimeData.csv")
