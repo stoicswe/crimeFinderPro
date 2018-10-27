@@ -30,13 +30,13 @@ Unless you already have the packages...in that case, you're pretty cool.
 
 ## Authors
 
-* **Nathan Bunch** - *Repo Builder* - [LinkedIn] (https://www.linkedin.com/in/nathan-bunch-024068b6/)
+* **Nathan Bunch** - *Repo Builder* - [LinkedIn](https://www.linkedin.com/in/nathan-bunch-024068b6/)
 
 * **Jonathan Povish** - *Data Scientist*
 
 * **Sumayyah Alahmadi** - *Data Visualizer and l33t h4kr*
 
-See also other contributors, if there are more by the time you check out this project, as the list of [contributors] (https://github.com/taranoshi/crimeFinderPro/graphs/contributors) may continue to grow...if this project takes off.
+See also other contributors, if there are more by the time you check out this project, as the list of [contributors](https://github.com/taranoshi/crimeFinderPro/graphs/contributors) may continue to grow...if this project takes off.
 
 ## License
 
