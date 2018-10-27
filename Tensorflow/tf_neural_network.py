@@ -7,6 +7,23 @@ def build_model(hidden, units, activation, outputs):
     for i in range(hidden):
         model.add(keras.layers.Dense(units, activation=activation))
     model.add(keras.layers.Dense(units, activation='softmax'))
+    return model
+
+# model.fit(data, labels, epochs=10, batch_size=32, validation_data=(val_data, val_labels))
+
+def train_gradient_descent_model(model, data, labels, epochs, batch):
+    model.compile(optimizer=tf.train.GradientDescentOptimizer(0.01), metrics=['accuracy'])
+    model.fit(data, labels, epochs=epochs, batch_size=batch)
+
+def train_mean_square_error_reg(model, data, labels, epochs, batch):
+    model.compile(optimizer=tf.train.AdamOptimizer(0.01), loss='mse', metrics=['mae'])
+    model.fit(data, labels, epochs=epochs, batch_size=batch)
+
+def train_categorial_classification(model, data, labels, epochs, batch):
+    model.compile(optimizer=tf.train.RMSPropOptimizer(0.01), loss=keras.losses.categorical_crossentropy, metrics=[keras.metrics.categorical_accuracy])
+    model.fit(data, labels, epochs=epochs, batch_size=batch)
+
+
 
 """X = [[0.0,0.0,1.0],[0.0,1.0,1.0],[1.0,0.0,1.0],[1.0,1.0,1.0]]
 y = [[0.0, 1.0, 1.0, 0.0]]

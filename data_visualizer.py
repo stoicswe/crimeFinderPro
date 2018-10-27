@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 import numpy as np
 from datetime import datetime
-import data_formation
+from data_formation import import_dataframe
 #import geoplotlib
 #import googlemaps
 ''' Below is an example of a simple pie chart 
@@ -130,7 +130,7 @@ def plotDays():
     plt.title('Programming language usage')
     plt.show()
 
-CrimeData = data_formation.import_dataframe("‪CrimeData_2012.csv")
+CrimeData = import_dataframe('‪./CrimeData_2012.csv')
 plotCrimes()
 plotDays()
 plotHours()
