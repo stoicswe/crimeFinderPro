@@ -138,7 +138,7 @@ def plotDays():
     plt.title('Programming language usage')
     plt.show()
 
-CrimeData = import_dataframe('‪./Datasets/CrimeData_2012.csv')
+CrimeData = pd.read_csv('‪./Datasets/CrimeData_2012.csv')
 plotCrimes()
 plotDays()
 plotHours()
