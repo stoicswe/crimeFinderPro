@@ -52,35 +52,39 @@ def plotHours():
     #Below line change the 'crime' to whatever crime it is'
     crimeColumn = CrimeData['StatuteCrimeCategory'].tolist()
     #Below line change the 'time' to time crime it is'
-    dateColumn = CrimeData['Time'].toList()
+    dateColumn = CrimeData['OccurredThroughTime'].tolist()
 
     crimesType = list(set(crimeColumn))
     CrimeTimeSplit = []
-
+    Times = []
     for type in range(len(crimesType)):
         CrimeTimeSplit.append([])
 
-    for z in range(len(crimes)):
-        CrimeTimeSplit[crimesType.index(crimes[x])].append(int(dateColumn[z]/100))
+    for z in range(len(crimeColumn)):
+        Times.append(int(dateColumn[z]/100))
+        #CrimeTimeSplit[crimesType.index(crimeColumn[z])].append(int(dateColumn[z]/100))
     #import matplotlib.pyplot as plt
-    xAxis = [range(23)]
+    xAxis = list(range(23))
+    yAxis = []
     for x in range(len(xAxis)):
-        yAxis.append(xAxis.count(xAxis[x]))
+        yAxis.append(Times.count(xAxis[x]))
     # make up some data
     #x = [datetime.datetime.now() + datetime.timedelta(hours=i) for i in range(12)]
     #y = [i+random.gauss(0,1) for i,_ in enumerate(x)]
     # plot
     lines = plt.plot(xAxis,yAxis)
     # beautify the x-labels
+    print(yAxis)
+    print(xAxis)
     plt.gcf().autofmt_xdate()
     plt.show()
 
 
 def plotDays():
     #Below line change the 'crime' to whatever crime it is'
-    crimeColumn = CrimeData['Statute_Category'].toList()
+    crimeColumn = CrimeData['StatuteCategory'].tolist()
     #Below line change the 'time' to where the full time crime it is'
-    dateColumn = CrimeData['Time'].toList()
+    dateColumn = CrimeData['OccurredThroughTimestamp'].tolist()
     
     crimesType = list(set(crimeColumn))
     CrimeDaySplit = []
@@ -89,21 +93,32 @@ def plotDays():
     for type in range(len(crimesType)):
         CrimeDaySplit.append([])
 
-    for z in range(len(crimes)):
+    for z in range(len(crimeColumn)):
         d = datetime.strptime(dateColumn[z].split(",")[0], "%m/%d/%Y")
 
         totalTime.append(d.weekday())
-        CrimeTimeSplit[crimesType.index(crimes[x])].append(d.weekday())
+        #This is here if we want each crimes distrobution 
+        #CrimeTimeSplit[crimesType.index(crimes[x])].append(d.weekday())
         
-    objects = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    days = ['Sun.', 'Mon.', 'Tues.', 'Wed.', 'Thurs.', 'Fri.', 'Sat.']
     performance = []
-    for x in range(len(object)):
+    for x in range(len(days)):
         performance.append(totalTime.count(x))
     #performance = [10,8,6,4,2,1]
-    plt.barh(y_pos, performance, align='center', alpha=0.5)
-    plt.yticks(y_pos, objects)
+    #y_pos = max(performance)
+    y_pos = np.arange(len(days))
+
+    print(y_pos)
+    print(performance)
+    
+    plt.bar(y_pos, performance, align='center', alpha=0.5)
+    #plt.bar(y_pos, performance, align='center', alpha=0.5)
+    plt.xticks(y_pos, days)
     plt.xlabel('Usage')
     plt.title('Programming language usage')
     plt.show()
 
 CrimeData = data_formation.import_dataframe("CrimeData.csv")
+plotCrimes()
+plotDays()
+plotHours()
