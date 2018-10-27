@@ -19,9 +19,9 @@ def getLatLon(address):
 
     
 def getLat(x):   
-    address = "1600 Amphitheatre Parkway, Mountain View, CA"
-    #address = x
-    api_key = "AIzaSyDlPGwvHDrnUh7cugYNIngmJPmZAWAN_VY"
+    #address = "1600 Amphitheatre Parkway, Mountain View, CA"
+    address = x
+    api_key = google_api_key
     #address = "1600 Amphitheatre Parkway, Mountain View, CA"
     #api_key = "<api key copied from google>"
     api_response = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address={0}&key={1}'.format(address, api_key))
@@ -32,7 +32,7 @@ def getLat(x):
         longitude = api_response_dict['results'][0]['geometry']['location']['lng']
         print(latitude)
         print(longitude)
-
+        return([latitude,longitude])
 
 # returns a complete quantum kmeans model
 def qkmeans_analysis(X, y, k):
