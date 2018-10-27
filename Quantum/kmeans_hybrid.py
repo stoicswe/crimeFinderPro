@@ -1,5 +1,5 @@
 from linear_algebra_hybrid import squared_distance, vector_mean, distance
-from quantum_dot_product_test import dot, distance
+from quantum_dot_product import dot, distance
 import math, random
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
