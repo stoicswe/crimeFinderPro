@@ -13,6 +13,8 @@ import random
 import numpy as np
 from datetime import datetime
 import data_formation
+import geoplotlib
+import googlemaps
 ''' Below is an example of a simple pie chart 
 labels = 'Python', 'C++', 'Ruby', 'Java'
 #Replace this with labels of crime

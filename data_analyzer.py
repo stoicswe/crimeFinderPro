@@ -4,8 +4,9 @@ sys.path.insert(0, "./Classical")
 sys.path.insert(0, "./Tensorflow")
 import googlemaps
 import sklearn
-import geoplotlib
 from kmeans_hybrid import QKMeans
+
+gmaps = googlemaps.Client(key='AIzaSyDlPGwvHDrnUh7cugYNIngmJPmZAWAN_VY')
 
 # returns a complete quantum kmeans model
 def qkmeans_analysis(X, y, k):
