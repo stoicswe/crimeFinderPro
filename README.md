@@ -16,11 +16,11 @@ Python 3.5 or newer
 ```
 and you will need to install the following python packages, by running the following lines:
 ```
-pip3 install pandas
-pip3 install sklearn
-pip3 install geoplotlib
-pip3 install googlemaps
-pip3 install tensorflow
+pip install pandas
+pip install sklearn
+pip install geoplotlib
+pip install googlemaps
+pip install tensorflow
 ```
 Unless you already have the packages...in that case, you're pretty cool.
 
