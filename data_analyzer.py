@@ -4,7 +4,7 @@ sys.path.insert(0, "./Classical")
 sys.path.insert(0, "./Tensorflow")
 import googlemaps
 import data_formation
-from sklearn import linear_model, decision_tree_classification, decision_tree_regression
+from sklearn import linear_model, DecisionTreeClassification, DecisionTreeRegression
 from kmeans_hybrid import QKMeans
 import requests
 
