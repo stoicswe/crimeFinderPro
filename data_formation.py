@@ -7,16 +7,26 @@
 # so that the analyzer can learn upon the data to make predictions
 # and to give the data a user-friendly view of the data for manual analysis.
 
-import pandas as np
+import pandas as pd
 import numpy as py
 import random
 import csv
 
-def import_data(file):
-    with open(file, mode='r') as csv_file:
+def import_dictionary(file):
+    with open(file, mode='r', encoding="utf-8") as csv_file:
         csv_reader = csv.DictReader(csv_file)
         lines = 0
+        print(csv_reader)
         for row in csv_reader:
-            print(f'Columns: {", ".join(row)}')
+            if lines == 0:
+                print(f'Columns: {", ".join(row)}')
+                lines += 1
+            print(f'\t{row["GeocodeAddress"]}')
             lines += 1
-        print(row["Geocode Address"])
+
+def import_dataframe(file):
+    df = pd.DataFrame.from_csv(file)
+    print(df)
+    labels_to_drop = ["GeocodeStreet","CaseNumber","ReportedDateYear","ReportedDateMonth","ReportedTime","ReportedTimestamp","AddressStreetFull","AddressCity","AddressState","PatrolBeat","PatrolSection","CaseStatus","StatuteTitle","StatuteSection","StatuteSubsection","StatuteDegree","StatuteClass","StatuteText","StatuteAttempted","GeoBeat","GeoSection","GeoSectionNum"]
+    df = df.drop(labels=labels_to_drop, axis=1)
+    return df
