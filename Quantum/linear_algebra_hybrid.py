@@ -1,11 +1,9 @@
-# -*- coding: iso-8859-15 -*-
-
 import re, math, random # regexes, math functions, random numbers
-import matplotlib.pyplot as plt # pyplot
+#import matplotlib.pyplot as plt # pyplot
 import numpy as np
-from collections import defaultdict, Counter
+#from collections import defaultdict, Counter
 from functools import partial, reduce
-from quantum_dot_product_test import dot, distance
+from quantum_dot_product import dot, distance
 
 def vector_add(v, w):
     """adds two vectors componentwise"""

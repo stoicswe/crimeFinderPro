@@ -4,7 +4,7 @@ import math, random
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 
-class KMeans:
+class QKMeans:
     """performs k-means clustering"""
 
     def __init__(self, k):
