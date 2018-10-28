@@ -120,14 +120,14 @@ def lineReg(X,y):
     return regr
 
 def plotMaps(CrimeData): 
+    
     #Assuming DF has lat/long
     '''
     crimeColumn = CrimeData['Geocode_Address'].tolist()
     LatColumn = CrimeData['Latitude'].tolist()
     LongColumn = CrimeData['Longitude'].tolist()
     data = []
-    '''
-    
+    '''    
     vals = list(CrimeData.columns.values)
     vals.remove("Latitude")
     vals.remove("Longitude")
