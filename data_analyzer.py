@@ -17,7 +17,7 @@ google_api_key = 'AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8'
 
 def import_dataframe(csv_file = ''):
     #df = pd.DataFrame.from_csv(file)
-    df = pd.read_csv(csv_file)
+    df = (csv_file)
     print(df)
     labels_to_drop = ["Y", "OBJECTID", "Geocode_Street","Case_Number","Reported_Date_Year","Reported_Date_Month","Reported_Time","Reported_Timestamp","Address_StreetFull","Address_City","Address_State","Patrol_Beat","Patrol_Section","Case_Status","Statute_Title","Statute_Section","Statute_Subsection","Statute_Degree","Statute_Class","Statute_Text","Statute_Attempted","Geo_Beat","Geo_Section","Geo_Section_Num"]
     df = df.drop(labels=labels_to_drop, axis=1)
@@ -73,14 +73,27 @@ def lineReg(X,y):
 
 def plotMaps(CrimeData): 
     #Assuming DF has lat/long
+    '''
     crimeColumn = CrimeData['Geocode_Address'].tolist()
     LatColumn = CrimeData['Latitude'].tolist()
     LongColumn = CrimeData['Longitude'].tolist()
-    data = zip(LatColumn,LongColumn)
-    geoplotlib.dot(data)
-    geoplotlib.show()
+    data = []
+    '''
+    
+    vals = list(CrimeData.columns.values)
+    vals.remove("Latitude")
+    vals.remove("Longitude")
+    Data = CrimeData.drop(vals, axis = 1)
+    #for x in range(len(LatColumn)):
+     #   data.append([LatColumn[x],LongColumn[x]])
+    print(vals)
+    Data.to_csv("TempFileName.csv", sep=',', encoding='utf-8')
+    #geoplotlib.dot(data)
+    #geoplotlib.show()
 
-test_data = import_dataframe("./CrimeData_Test.csv")
+
+    
+test_data = pd.read_csv("./Datasets/CrimeData_Test_with_Lat_Lon.csv")
 plotMaps(test_data)
 #CrimeData = import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2018.csv")
 #CrimeLoc = CrimeData[]
