@@ -90,8 +90,8 @@ def getLat(x):
     if api_response_dict['status'] == 'OK':
         latitude = api_response_dict['results'][0]['geometry']['location']['lat']
         longitude = api_response_dict['results'][0]['geometry']['location']['lng']
-        print(latitude)
-        print(longitude)
+        #print(latitude)
+        #print(longitude)
         return([latitude,longitude])
 
 # returns a complete quantum kmeans model
