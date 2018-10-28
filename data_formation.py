@@ -40,4 +40,12 @@ def import_dataframe(csv_file = ''):
     df = df.drop(labels=labels_to_drop, axis=1)
     return df
 
+def import_dataframe_no_drop(csv_file = ''):
+    #df = pd.DataFrame.from_csv(file)
+    df = pd.read_csv(csv_file)
+    #print(df)
+    #labels_to_drop = ["Geocode_Street","Case_Number","Reported_Date_Year","Reported_Date_Month","Reported_Time","Reported_Timestamp","Address_StreetFull","Address_City","Address_State","Patrol_Beat","Patrol_Section","Case_Status","Statute_Title","Statute_Section","Statute_Subsection","Statute_Degree","Statute_Class","Statute_Text","Statute_Attempted","Geo_Beat","Geo_Section","Geo_Section_Num"]
+    #df = df.drop(labels=labels_to_drop, axis=1)
+    return df
+
 #print(import_dataframe("./Datasets/CrimeData_2011.csv"))
