@@ -1,3 +1,10 @@
+# Nathan Bunch
+# 10/27/2018
+# Quantum KMeans algorithm. This part of the project is to not
+# only demonstrate how the data can be divided into clusters,
+# but to also demonstrate the methods used to implement a kmeans
+# algorithm using quantum computing.
+
 from linear_algebra_hybrid import squared_distance, vector_mean, distance
 from quantum_dot_product import dot, distance
 import math, random
@@ -138,17 +145,15 @@ def generate_clusters(base_cluster, num_clusters):
     # once we have enough clusters...
     return clusters
 
+# if you were to run this script directly, you can observe the example given below
+# and how that functions.
+
 if __name__ == "__main__":
 
-    #inputs = [[-14,-5],[13,13],[20,23],[-19,-11],[-9,-16],[21,27],[-49,15],[26,13],[-46,5],[-34,-1],[11,15],[-49,0],[-22,-16],[19,28],[-12,-8],[-13,-19],[-41,8],[-11,-6],[-25,-9],[-18,-3]]
-    #print(inputs)
     x = [0.09983341664682815, 0.19866933079506122, 0.29552020666133955, 0.3894183423086505, 0.479425538604203, 0.9974949866040544, 0.9995736030415051, 0.9916648104524686, 0.9738476308781951, 0.9463000876874145]
     y = [0.9950041652780258, 0.9800665778412416, 0.955336489125606, 0.9210609940028851, 0.8775825618903728, 0.0707372016677029, -0.029199522301288815, -0.12884449429552464, -0.2272020946930871, -0.32328956686350335]
     inputs = [[xi,yi] for xi, yi in zip(x,y)]
-    #print(inputs)
-
-    random.seed(0) # so you get the same results as me
-    #clusterer = KMeans(3)
+    random.seed(0)
     clusters = 2
     clusterer = QKMeans(clusters)
     clusterer.train(inputs)

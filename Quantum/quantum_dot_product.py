@@ -1,3 +1,10 @@
+# Nathan Bunch
+# 10/27/2018
+# This file contains the source code for emulating the quantum states necessary for
+# computing the dot product of two vectors. On a real quantum machine, it would be much
+# faster for compute times, however, on a classical machine...its slow, as a classical
+# machine has a harder time simulating the quantum states.
+
 import numpy as np
 import numpy.linalg as lg
 import numpy.random as random
@@ -94,38 +101,28 @@ def distance(v1, v2):
 
 def dot(v1, v2):
     register = SwapRegister(3)
-    #register.qubits[0:4] = np.array([1./np.sqrt(6), 1./np.sqrt(6), 1./np.sqrt(3), 1./np.sqrt(3)])
     # encode the two points
     # x1
     register.set_qubit(1, v1[0], v1[1])
     # x2
     register.set_qubit(2, v2[0], v2[1])
-    #print("Initial")
-    #print(register)
     H = 1./np.sqrt(2) * np.array([[1., 1.],[1., -1.]])
     eye = np.eye(2)
     H_t = np.kron(H,np.kron(eye,eye))
 
     register.qubits = H_t.dot(register.qubits)
-    #print("Hadamar")
-    #print(register)
     register.cswap(0,1,2)
-    #print("c-swap")
-    #print(register)
     register.qubits = H_t.dot(register.qubits)
-    #print("Hadamar")
-    #print(register)
 
     def avg(values):
         return sum(values)/float(len(values))
     average = avg([register.measure() < 4 for i in range (10000)])
-    #print average
-    #print("Measure average")
-    #print(np.sqrt(average*2-1))
     dot_result = np.sqrt(average*2-1)
     return dot_result
 
-#x = [0.09983341664682815, 0.19866933079506122, 0.29552020666133955, 0.3894183423086505, 0.479425538604203, 0.9974949866040544, 0.9995736030415051, 0.9916648104524686, 0.9738476308781951, 0.9463000876874145]
-#y = [0.9950041652780258, 0.9800665778412416, 0.955336489125606, 0.9210609940028851, 0.8775825618903728, 0.0707372016677029, -0.029199522301288815, -0.12884449429552464, -0.2272020946930871, -0.32328956686350335]
+#Below is some test code for testing the distance function.
+
+#x = [0.09983341664682815, 0.19866933079506122]
+#y = [0.9950041652780258, 0.9800665778412416]
 #print("Distance:")
 #print(distance([x[0], y[0]],[x[1], y[1]]))

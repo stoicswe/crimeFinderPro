@@ -1,7 +1,8 @@
-# Nathan Bunch, Jonathan Povish
-# Project developed for the 
+# Nathan Bunch, Sumayyah Alahmadi, Jonathan Povish
+# Project developed for the Dandyhacks Hackathon 2018
 #
-#
+# This project is designed to analyze given crime data from
+# the rochester police department. 
 #
 
 from data_formation import import_dataframe

@@ -1,7 +1,11 @@
+# Nathan Bunch
+# 10/27/2018
+# This part of the code is written as an accompaniment to the quantum kmeans
+# algorithm. This file contains the functions necessary to perform the linear
+# algebra mathematics for computing the kmeans and clustering the data.
+
 import re, math, random # regexes, math functions, random numbers
-#import matplotlib.pyplot as plt # pyplot
 import numpy as np
-#from collections import defaultdict, Counter
 from functools import partial, reduce
 from quantum_dot_product import dot, distance
 
@@ -25,21 +29,12 @@ def vector_mean(vectors):
     n = len(vectors)
     return scalar_multiply(1/n, vector_sum(vectors))
 
-#def dot(v, w):
-#    """v_1 * w_1 + ... + v_n * w_n"""
-#    return sum(v_i * w_i for v_i, w_i in zip(v, w))
-
 def sum_of_squares(v):
     """v_1 * v_1 + ... + v_n * v_n"""
     v_norm = np.linalg.norm(v)
     v = v / v_norm
+    # the dot function here calls from the quantum_dot_product file
     return dot(v, v)
-    # this is also a quantum call here. can compute the dot
-    # of a list of vectors (v)
 
 def squared_distance(v, w):
     return sum_of_squares(vector_subtract(v, w))
-
-#def distance(v, w):
-#   return math.sqrt(squared_distance(v, w))
-   # this is where the quantum function should be called

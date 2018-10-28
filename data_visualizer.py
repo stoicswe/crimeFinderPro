@@ -32,28 +32,29 @@ plt.show()
 '''
 
 class Visualizer:
-    CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
+    #self.CrimeData = pd.read_csv('''./Datasets/self.CrimeData_2012.csv''')
 
     def __init__(self, df):
         self.CrimeData = df.copy()
+        print(df)
         
         
-    def import_dataframe(csv_file = ''):
+    """def import_dataframe(csv_file = ''):
         #df = pd.DataFrame.from_csv(file)
         df = pd.read_csv(csv_file)
         print(df)
         labels_to_drop = ["Y", "OBJECTID", "Geocode_Street","Case_Number","Reported_Date_Year","Reported_Date_Month","Reported_Time","Reported_Timestamp","Address_StreetFull","Address_City","Address_State","Patrol_Beat","Patrol_Section","Case_Status","Statute_Title","Statute_Section","Statute_Subsection","Statute_Degree","Statute_Class","Statute_Text","Statute_Attempted","Geo_Beat","Geo_Section","Geo_Section_Num"]
         df = df.drop(labels=labels_to_drop, axis=1)
-        return df
+        return df"""
 
 
     #Replace Vals With #of crime
     '''
-    def plotCrimes():
+    def plotCrimes(self):
         #Working Currently Right here
-        crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
+        crimeColumn = self.CrimeData['Statute_CrimeCategory'].tolist()
         #Below line change the 'time' to time crime it is'
-        sexColumn = CrimeData['Statute_Category'].tolist()    
+        sexColumn = self.CrimeData['Statute_Category'].tolist()    
         crimes = list(set(crimeColumn))
         vals = []
         for x in range(len(crimes)):
@@ -77,10 +78,10 @@ class Visualizer:
 
     '''
 
-    def plotCrimes():
+    def plotCrimes(self):
         #Working Currently Right here
-        crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
-        crimesText = CrimeData['Statute_Text'].tolist()
+        crimeColumn = self.CrimeData['Statute_CrimeCategory'].tolist()
+        crimesText = self.CrimeData['Statute_Text'].tolist()
         crimes = list(set(crimesText))
         counts = []
         tempVar = 0
@@ -93,9 +94,6 @@ class Visualizer:
             counts.append(crimesText.count(crimes[elem]))
         #crimesText = list(set(crimesText))
         #Below line change the 'time' to time crime it is'
-            
-            
-        
         tempVar3 = crimes[6]
         tempVar4 = crimes[2]
         crimes[2] = tempVar3
@@ -133,11 +131,11 @@ class Visualizer:
 
         
         
-    def plotHours():
+    def plotHours(self):
         #Below line change the 'crime' to whatever crime it is'
-        crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
+        crimeColumn = self.CrimeData['Statute_CrimeCategory'].tolist()
         #Below line change the 'time' to time crime it is'
-        dateColumn = CrimeData['OccurredThrough_Time'].tolist()
+        dateColumn = self.CrimeData['OccurredThrough_Time'].tolist()
         crimesType = list(set(crimeColumn))
         CrimeTimeSplit = []
         Times = []
@@ -165,11 +163,11 @@ class Visualizer:
         plt.show()
 
 
-    def plotDays():
+    def plotDays(self):
         #Below line change the 'crime' to whatever crime it is'
-        crimeColumn = CrimeData['Statute_Category'].tolist()
+        crimeColumn = self.CrimeData['Statute_Category'].tolist()
         #Below line change the 'time' to where the full time crime it is'
-        dateColumn = CrimeData['OccurredThrough_Timestamp'].tolist()
+        dateColumn = self.CrimeData['OccurredThrough_Timestamp'].tolist()
         
         crimesType = list(set(crimeColumn))
         CrimeDaySplit = []
@@ -208,23 +206,4 @@ class Visualizer:
         self.plotDays()
         self.plotHours()
 
-        #CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
-
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
- 
+        #self.CrimeData = pd.read_csv('''./Datasets/self.CrimeData_2012.csv''') 

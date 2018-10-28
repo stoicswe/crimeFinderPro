@@ -9,5 +9,5 @@ if  __name__ =='__main__':
       example2Data = import_dataframe("./Datasets/CrimeData_2018.csv")
       print("All datasets imported into memory.")
       runExample2 = Visualizer(example2Data)
-      runExample1.plotCrimes
-      runExample2.plotCrimes
+      runExample1.plotCrimes()
+      runExample2.plotCrimes()

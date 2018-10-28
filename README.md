@@ -36,9 +36,10 @@ crime_fighter.py
 
 ## Running the Tests
 
-We currently do not recommend running the tests, unless you have a buffy machine. This code can take awhile to process all the data. However, if you REALLY want to run the tests, we have a file called: *example.py* for that. The file will generate the graphs used for the demonstration at Dandyhacks. In the future, we hope to add more tests to this example so that you can get a better idea as to how this code functions, and how you too can adapt it to your own personal or public project. Anyway, if you want to run the example, the following command should work, granted you followed our advice about installing necessary packages and cd'd into the directory where you decided to clone this repository ;-)
+We currently do not recommend running the tests, unless you have a buffy machine. This code can take awhile to process all the data. However, if you REALLY want to run the tests, we have a file called: *example.py* for that. Oh...wait. That was a trap. Use *data_visualizer.py* instead, we tried making the process easier with *example.py*, but it ended up just breaking everything. Anyway, the file will generate the graphs used for the demonstration at Dandyhacks. In the future, we hope to add more tests to this example so that you can get a better idea as to how this code functions, and how you too can adapt it to your own personal or public project. Anyway, if you want to run the example, the following command should work, granted you followed our advice about installing necessary packages and cd'd into the directory where you decided to clone this repository ;-)
 ```
-python ./examples.py
+python ./examples.py #eh...no
+python ./data_visualizer.py #yes.
 ```
 
 ## Authors
