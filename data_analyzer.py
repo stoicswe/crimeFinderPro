@@ -4,8 +4,8 @@ sys.path.insert(0, "./Classical")
 sys.path.insert(0, "./Tensorflow")
 import googlemaps
 #import data_formation
-from sklearn import linear_model
-from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+#from sklearn import linear_model
+#from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from kmeans_hybrid import QKMeans
 import requests
 import os
@@ -29,6 +29,8 @@ def getLatLon(address):
 
     
 def getLat(x):   
+    google_api_key = 'AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8'
+
     #address = "1600 Amphitheatre Parkway, Mountain View, CA"
     address = x
     api_key = google_api_key

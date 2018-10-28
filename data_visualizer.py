@@ -76,12 +76,29 @@ def plotCrimes():
     crimesText = CrimeData['Statute_Text'].tolist()
     crimes = list(set(crimesText))
     counts = []
+    tempVar = 0
+    tempVar3 = ""
+    tempVar2 = 0
+    tempVar4 = ""
+
+    
     for elem in range(len(crimes)):
         counts.append(crimesText.count(crimes[elem]))
     #crimesText = list(set(crimesText))
     #Below line change the 'time' to time crime it is'
+        
+        
     
+    tempVar3 = crimes[2]
+    tempVar4 = crimes[1]
+    crimes[1] = tempVar3
+    crimes[2] = tempVar4
     
+    tempVar = counts[2]
+    tempVar2 = counts[1]
+    counts[1] = tempVar
+    counts[2] = tempVar2
+    print(crimes)
     plt.pie(counts, labels=crimes, startangle=90, autopct='%.1f%%')
     plt.title('Rochester Crime Distribution')
     plt.show()

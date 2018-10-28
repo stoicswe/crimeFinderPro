@@ -5,7 +5,7 @@
 #
 
 from data_formation import import_dataframe
-
+from data_analyzer import getLat
 print("Grabbing data...")
 print("0")
 crimeData2011 = import_dataframe("./Datasets/CrimeData_2011.csv")
@@ -31,3 +31,19 @@ print("All datasets imported into memory.")
 
 print(crimeData2011)
 
+
+def addLad(df):
+    locs = df['Geocode_Address'].tolist()
+    Lats = []
+    Longs = []
+    for x in range(len(locs)):
+        tempvar = getLat(locs[x])
+        Lats.append(tempvar[0])
+        Longs.append(tempvar[1])
+    ser1 = pd.Series(Lats)
+    ser2 = pd.Series(Longs)
+    df = df.assign(Latitude = ser1, Longitude = ser2)
+    return(df)
+    
+def writeToCsv(df,name):
+    df.to_csv(name, sep=',', encoding='utf-8')
