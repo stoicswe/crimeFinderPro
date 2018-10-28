@@ -72,14 +72,15 @@ def lineReg(X,y):
     return regr
 
 def plotMaps(CrimeData): 
+    #Assuming DF has lat/long
     crimeColumn = CrimeData['Geocode_Address'].tolist()
-    data = []
-    for x in range(len(crimeColumn)):
-        tempvar = getLat(crimeColumn[x])
-        data.append(tempvar)
-        print(tempvar)
+    LatColumn = CrimeData['Latitude'].tolist()
+    LongColumn = CrimeData['Longitude'].tolist()
+    data = zip(LatColumn,LongColumn)
     geoplotlib.dot(data)
     geoplotlib.show()
 
+test_data = import_dataframe("./CrimeData_Test.csv")
+plotMaps(test_data)
 #CrimeData = import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2018.csv")
 #CrimeLoc = CrimeData[]
