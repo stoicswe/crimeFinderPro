@@ -7,7 +7,9 @@
 
 from data_formation import import_dataframe
 from data_analyzer import getLat
-from data_visualizer import doPlots
+import pandas as pd
+#from data_visualizer import doPlots
+
 def getAllDfs():
     print("Grabbing data...")
     dfList = []
@@ -41,17 +43,21 @@ def getAllDfs():
     return(dfList)
 # in this file, the data should be prepared.
 
-print(crimeData2011)
+# print(crimeData2011)
 
 
 def addLad(df):
     locs = df['Geocode_Address'].tolist()
     Lats = []
     Longs = []
+    i = 0
     for x in range(len(locs)):
+        if i % 1000 == 0:
+            print(i)
         tempvar = getLat(locs[x])
         Lats.append(tempvar[0])
         Longs.append(tempvar[1])
+        i += 1
     ser1 = pd.Series(Lats)
     ser2 = pd.Series(Longs)
     df = df.assign(Latitude = ser1, Longitude = ser2)
@@ -60,11 +66,6 @@ def addLad(df):
 def writeToCsv(df,name):
     df.to_csv(name, sep=',', encoding='utf-8')
 
-def MakeGraphsFromList(dfList):
-    for x in range(len(dfList)):
-       doPlots(dfList[x])
-
-writeToCsv(import_dataframe('./Dataset/2018'), "")
-writeToCsv(import_dataframe('./Dataset/2017'), "")
-writeToCsv(import_dataframe('./Dataset/2016'), "")
-writeToCsv(import_dataframe('./Dataset/2015'), "")
+#def MakeGraphsFromList(dfList):
+#    for x in range(len(dfList)):
+#       doPlots(dfList[x])
