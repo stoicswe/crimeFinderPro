@@ -63,3 +63,8 @@ def writeToCsv(df,name):
 def MakeGraphsFromList(dfList):
     for x in range(len(dfList)):
        doPlots(dfList[x])
+
+writeToCsv(import_dataframe('./Dataset/2018'), "")
+writeToCsv(import_dataframe('./Dataset/2017'), "")
+writeToCsv(import_dataframe('./Dataset/2016'), "")
+writeToCsv(import_dataframe('./Dataset/2015'), "")
