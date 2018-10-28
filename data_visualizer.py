@@ -209,3 +209,22 @@ class Visualizer:
         self.plotHours()
 
         #CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
+
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+ 
