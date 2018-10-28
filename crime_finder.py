@@ -58,6 +58,7 @@ def addLad(df):
 def writeToCsv(df,name):
     df.to_csv(name, sep=',', encoding='utf-8')
 
+
     
 def MakeGraphsFromList(dfList):
     for x in range(len(dfList)):
