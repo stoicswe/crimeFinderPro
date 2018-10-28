@@ -8,7 +8,7 @@ import pandas as pd
 from data_formation import import_dataframe
 from data_analyzer import getLat
 import pandas as pd
-#from data_visualizer import doPlots
+from data_visualizer import doPlots
 
 def getAllDfs():
     print("Grabbing data...")
