@@ -71,6 +71,9 @@ def plotCrimes():
 '''
 
 def plotCrimes():
+    colors = ['bisque', 'royalblue', 'springgreen', 'slategrey', 'tomato', 'plum','darkolivegreen']
+    #colors = ['bisque', 'royalblue', 'springgreen', 'slategrey', 'tomato', 'plum']
+
     #Working Currently Right here
     crimeColumn = CrimeData['Statute_CrimeCategory'].tolist()
     crimesText = CrimeData['Statute_Text'].tolist()
@@ -80,7 +83,7 @@ def plotCrimes():
     tempVar3 = ""
     tempVar2 = 0
     tempVar4 = ""
-
+    
     
     for elem in range(len(crimes)):
         counts.append(crimesText.count(crimes[elem]))
@@ -100,8 +103,8 @@ def plotCrimes():
     counts[6] = tempVar2
     print(crimes)
     print(counts)
-    plt.pie(counts, labels=crimes, startangle=90, autopct='%.1f%%')
-    plt.title('Rochester Crime Distribution')
+    plt.pie(counts, labels=crimes, startangle=0,colors=colors,autopct='%.1f%%')
+    plt.title('Rochester Crime Distribution for Year: ' + str(Year))
     plt.show()
     '''
     fig, ax = plt.subplots()
@@ -153,8 +156,10 @@ def plotHours():
     # beautify the x-labels
     print(yAxis)
     print(xAxis)
-    plt.xlabel('Hour')
-    plt.gcf().autofmt_xdate()
+    plt.xlabel('Hour of Day')
+    plt.ylim(0,1000)
+    plt.ylabel('#Crimes in ' + str(Year))
+    #plt.gcf().autofmt_xdate()
     plt.show()
 
 
@@ -193,10 +198,13 @@ def plotDays():
     #plt.bar(y_pos, performance, align='center', alpha=0.5)
     plt.xticks(y_pos, days)
     plt.xlabel('Day')
+    plt.ylabel('#Crimes in ' + str(Year))
+    plt.ylim(600,2600)
     plt.title('Daily Distribution of Crime/Yr')
     plt.show()
 
-CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
+Year = 2018
+CrimeData = pd.read_csv('''./Datasets/CrimeData_2018.csv''')
 def doPlots(df):
     CrimeData = df
     plotCrimes()

@@ -149,7 +149,7 @@ def plotMaps(CrimeData):
 
 
 
-test_data = pd.read_csv("./Datasets/CrimeData_Test_with_Lat_Lon.csv")
+test_data = pd.read_csv("./Datasets/CrimeData_2018_with_Lat_Lon.csv")
 plotMaps(test_data)
 #CrimeData = import_dataframe("C:/Users/jonp/Documents/School/Dandy/crimeFinderPro/Datasets/CrimeData_2018.csv")
 #CrimeLoc = CrimeData[]

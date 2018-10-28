@@ -4,7 +4,7 @@
 # This project is designed to analyze given crime data from
 # the rochester police department. 
 #
-
+import pandas as pd
 from data_formation import import_dataframe
 from data_analyzer import getLat
 from data_visualizer import doPlots
@@ -41,9 +41,6 @@ def getAllDfs():
     return(dfList)
 # in this file, the data should be prepared.
 
-print(crimeData2011)
-
-
 def addLad(df):
     locs = df['Geocode_Address'].tolist()
     Lats = []
@@ -64,7 +61,5 @@ def MakeGraphsFromList(dfList):
     for x in range(len(dfList)):
        doPlots(dfList[x])
 
-writeToCsv(import_dataframe('./Dataset/2018'), "")
-writeToCsv(import_dataframe('./Dataset/2017'), "")
-writeToCsv(import_dataframe('./Dataset/2016'), "")
-writeToCsv(import_dataframe('./Dataset/2015'), "")
+#writeToCsv(addLad(import_dataframe('''Datasets/CrimeData_2018.csv''')), "CrimeData_2018_with_Lat_Lon.csv")
+writeToCsv(addLad(import_dataframe('''Datasets/CrimeData_2017.csv''')), "CrimeData_2017_with_Lat_Lon.csv")
