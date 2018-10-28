@@ -116,7 +116,7 @@ def dot(v1, v2):
 
     def avg(values):
         return sum(values)/float(len(values))
-    average = avg([register.measure() < 4 for i in range (10000)])
+    average = avg([register.measure() < 4 for i in range (15)])
     dot_result = np.sqrt(average*2-1)
     return dot_result
 
