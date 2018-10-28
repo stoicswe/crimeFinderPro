@@ -196,9 +196,10 @@ def plotDays():
     plt.title('Daily Distribution of Crime/Yr')
     plt.show()
 
-#CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
+CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
 def doPlots(df):
     CrimeData = df
     plotCrimes()
     plotDays()
     plotHours()
+doPlots(CrimeData)
