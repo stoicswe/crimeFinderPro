@@ -1,4 +1,5 @@
 from data_visualizer import doPlots
+from data_formation import import_dataframe
 
 def runExample(df):
     doPlots(df)

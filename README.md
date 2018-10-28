@@ -21,12 +21,25 @@ pip install sklearn
 pip install geoplotlib
 pip install googlemaps
 pip install tensorflow
+pip install matplotlib
 ```
 Unless you already have the packages...in that case, you're pretty cool.
 
 ### Installing
 
+At the moment, the best way to "install" this project is to clone it to your drive and to then proceed to run the functions in the following files:
+```
+data_analyze.py
+data_visualizer.py
+crime_fighter.py
+```
+
 ## Running the Tests
+
+We currently do not recommend running the tests, unless you have a buffy machine. This code can take awhile to process all the data. However, if you REALLY want to run the tests, we have a file called: *example.py* for that. The file will generate the graphs used for the demonstration at Dandyhacks. In the future, we hope to add more tests to this example so that you can get a better idea as to how this code functions, and how you too can adapt it to your own personal or public project. Anyway, if you want to run the example, the following command should work, granted you followed our advice about installing necessary packages and cd'd into the directory where you decided to clone this repository ;-)
+```
+python3 ./examples.py
+```
 
 ## Authors
 
