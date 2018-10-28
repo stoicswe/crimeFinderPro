@@ -89,16 +89,17 @@ def plotCrimes():
         
         
     
-    tempVar3 = crimes[2]
-    tempVar4 = crimes[1]
-    crimes[1] = tempVar3
-    crimes[2] = tempVar4
+    tempVar3 = crimes[6]
+    tempVar4 = crimes[2]
+    crimes[2] = tempVar3
+    crimes[6] = tempVar4
     
-    tempVar = counts[2]
-    tempVar2 = counts[1]
-    counts[1] = tempVar
-    counts[2] = tempVar2
+    tempVar = counts[6]
+    tempVar2 = counts[2]
+    counts[2] = tempVar
+    counts[6] = tempVar2
     print(crimes)
+    print(counts)
     plt.pie(counts, labels=crimes, startangle=90, autopct='%.1f%%')
     plt.title('Rochester Crime Distribution')
     plt.show()
@@ -195,7 +196,9 @@ def plotDays():
     plt.title('Daily Distribution of Crime/Yr')
     plt.show()
 
-CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
-plotCrimes()
-plotDays()
-plotHours()
+#CrimeData = pd.read_csv('''./Datasets/CrimeData_2012.csv''')
+def doPlots(df):
+    CrimeData = df
+    plotCrimes()
+    plotDays()
+    plotHours()
