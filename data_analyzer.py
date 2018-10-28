@@ -32,7 +32,7 @@ class KMeansLayer(BaseLayer):
 
     def invalidate(self, proj):
         self.painter = BatchPainter()
-        x, y = proj.lonlat_to_screen(self.data['lon'], self.data['lat'])
+        x, y = proj.lonlat_to_screen(self.data['Longitude'], self.data['Latitude'])
 
         k_means = KMeans(n_clusters=self.k)
         k_means.fit(np.vstack([x,y]).T)
