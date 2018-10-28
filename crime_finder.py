@@ -43,12 +43,6 @@ def getAllDfs():
     return(dfList)
 # in this file, the data should be prepared.
 
-<<<<<<< HEAD
-=======
-# print(crimeData2011)
-
-
->>>>>>> d196d9aa30079f0f20ba25deff59592a04f0a363
 def addLad(df):
     locs = df['Geocode_Address'].tolist()
     Lats = []
@@ -69,15 +63,9 @@ def addLad(df):
 def writeToCsv(df,name):
     df.to_csv(name, sep=',', encoding='utf-8')
 
-<<<<<<< HEAD
 def MakeGraphsFromList(dfList):
     for x in range(len(dfList)):
        doPlots(dfList[x])
 
 #writeToCsv(addLad(import_dataframe('''Datasets/CrimeData_2018.csv''')), "CrimeData_2018_with_Lat_Lon.csv")
-writeToCsv(addLad(import_dataframe('''Datasets/CrimeData_2017.csv''')), "CrimeData_2017_with_Lat_Lon.csv")
-=======
-#def MakeGraphsFromList(dfList):
-#    for x in range(len(dfList)):
-#       doPlots(dfList[x])
->>>>>>> d196d9aa30079f0f20ba25deff59592a04f0a363
+#writeToCsv(addLad(import_dataframe('''Datasets/CrimeData_2017.csv''')), "CrimeData_2017_with_Lat_Lon.csv")
