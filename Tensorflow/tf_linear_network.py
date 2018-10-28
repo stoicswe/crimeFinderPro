@@ -1,7 +1,9 @@
+# This file needs work....there isnt a method to predict a value
+# given some input other than what this script does
+
 import tensorflow as tf
 import time
 import numpy as np
-
 
 class LinearModel:
     def __init__(self, INPUT, OUTPUT):
