@@ -31,7 +31,7 @@ At the moment, the best way to "install" this project is to clone it to your dri
 ```
 data_analyze.py
 data_visualizer.py
-crime_fighter.py
+crime_finder.py
 ```
 
 ## Running the Tests
@@ -40,6 +40,7 @@ We currently do not recommend running the tests, unless you have a buffy machine
 ```
 python ./examples.py #eh...no
 python ./data_visualizer.py #yes.
+python ./crime_finder.py #also yes. contains interactive map plots of crimes
 ```
 
 ## Authors
