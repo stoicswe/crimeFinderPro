@@ -2,6 +2,14 @@ import sys
 sys.path.insert(0, "./Quantum")
 sys.path.insert(0, "./Classical")
 sys.path.insert(0, "./Tensorflow")
+from geoplotlib.colors import create_set_cmap
+import pyglet
+from sklearn.cluster import KMeans
+import geoplotlib
+from geoplotlib.layers import BaseLayer
+from geoplotlib.core import BatchPainter
+from geoplotlib.utils import BoundingBox
+import numpy as np
 import googlemaps
 #import data_formation
 #from sklearn import linear_model
@@ -86,8 +94,16 @@ def plotMaps(CrimeData):
     Data = CrimeData.drop(vals, axis = 1)
     #for x in range(len(LatColumn)):
      #   data.append([LatColumn[x],LongColumn[x]])
-    print(vals)
-    Data.to_csv("TempFileName.csv", sep=',', encoding='utf-8')
+    #print(vals)
+    Data.to_csv("TempFileName2.csv", sep=',', encoding='utf-8')
+    data = geoplotlib.utils.read_csv('TempFileName2.csv') 
+    geoplotlib.add_layer(KMeansLayer(data)) 
+    geoplotlib.set_smoothing(True) 
+    geoplotlib.set_bbox(geoplotlib.utils.BoundingBox.DK) 
+    geoplotlib.show() 
+
+    
+    
     #geoplotlib.dot(data)
     #geoplotlib.show()
 
