@@ -22,6 +22,7 @@ pip install geoplotlib
 pip install googlemaps
 pip install tensorflow
 pip install matplotlib
+pip install pyglet
 ```
 Unless you already have the packages...in that case, you're pretty cool.
 
