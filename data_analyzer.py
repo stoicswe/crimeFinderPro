@@ -12,8 +12,8 @@ from geoplotlib.utils import BoundingBox
 import numpy as np
 import googlemaps
 #import data_formation
-#from sklearn import linear_model
-#from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+from sklearn import linear_model
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from kmeans_hybrid import QKMeans
 import requests
 import os
@@ -68,7 +68,7 @@ def import_dataframe(csv_file = ''):
     return df
 
 def getLatLon(address):
-    gmaps = googlemaps.Client(key = key2)
+    gmaps = googlemaps.Client(key = google_api_key)
     return(gmaps.geocode(address))
 
     

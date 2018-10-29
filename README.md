@@ -30,10 +30,14 @@ Unless you already have the packages...in that case, you're pretty cool.
 
 At the moment, the best way to "install" this project is to clone it to your drive and to then proceed to run the functions in the following files:
 ```
-data_analyze.py
+data_analyzer.py
 data_visualizer.py
 crime_finder.py
 ```
+
+## Configuration
+
+When you wish to run this software, you will have to include a Google Maps API Key for Geolocation. This API key must be defined in the *data_analyzer.py* file. This enables the software to convert adresses to longitude and latitude for analysis. The definition for the api variable can be found at the top of the file, after the imports.
 
 ## Running the Tests
 
