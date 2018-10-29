@@ -21,7 +21,7 @@ import pandas as pd
 import geoplotlib
 from tf_neural_network import TFNN
 
-google_api_key = 'AIzaSyBSeHmttjDc95cXQ_psRD2zkDnU0XqzuO8'
+google_api_key = 'YOUR_API_KEY_HERE'
 
 class KMeansLayer(BaseLayer):
 
@@ -59,10 +59,6 @@ class KMeansLayer(BaseLayer):
             return True
         return False
   
-
-
-
-
 def import_dataframe(csv_file = ''):
     #df = pd.DataFrame.from_csv(file)
     df = (csv_file)
